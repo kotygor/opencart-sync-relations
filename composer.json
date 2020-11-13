@@ -7,7 +7,7 @@
 		"src-dir" : "upload",
 		"mappings" : [
 			"admin/model/tool/jd_tools/relations.php",
-			"system/jd_tools/relation.php"
+			"system/library/jd_tools/relation.php"
 		],
 		"turned-off-installers" : {
 			"php" : "install.php"
