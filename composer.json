@@ -2,6 +2,7 @@
 	"name": "kotygor/opencart-sync-relations",
 	"descripiton": "Створення відношень між унікальними ідентифікаторами зовнішнього ресурсу і опенкарту",
 	"type": "opencart-extension",
+	"minimum-stability": "dev",
 	"extra": {
 		"src-dir" : "upload",
 		"mappings" : [
@@ -10,14 +11,16 @@
 		],
 		"turned-off-installers" : {
 			"php" : "install.php"
-		}
+		},
+		"opencart-install-dir": "opencart",
+		"opencart-storage-dir": "opencart-storage"
 	},
 	"require": {
-		"kotygor/opencart-extension-installer": "*",
-		"kotygor/opencart": "*"
+		"kotygor/opencart-extension-installer": "dev-master",
+		"kotygor/opencart": "dev-fcb"
 	},
 	"require-dev": {
-		"kotygor/mylog": "dev-v2"
+		"kotygor/mylog": "v2.x-dev"
 	},
 	"repositories": [
 		{
@@ -27,6 +30,14 @@
 		{
 			"type": "git",
 			"url": "https://github.com/kotygor/opencart"
+		},
+		{
+			"type": "git",
+			"url": "https://github.com/kotygor/mylog"
+		},
+		{
+			"type": "git",
+			"url": "https://github.com/kotygor/opencart-core-installer"
 		}
 	]
 }

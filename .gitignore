@@ -1,1 +1,5 @@
 /.idea
+vendor
+tests
+www
+opencart-storage
