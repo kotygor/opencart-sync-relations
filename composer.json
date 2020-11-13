@@ -17,7 +17,7 @@
 		"kotygor/opencart": "*"
 	},
 	"require-dev": {
-		"kotygor/mylog": "dev-master"
+		"kotygor/mylog": "dev-v2"
 	},
 	"repositories": [
 		{
