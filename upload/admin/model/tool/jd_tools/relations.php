@@ -76,7 +76,7 @@ class ModelToolJdToolsRelations extends Model {
 	}
 
 	public function createRelationsTable() {
-		$q = "CREATE TABLE IF NOT EXISTS `" . DB_PREFIX . "_relations` (`data_source` CHAR(50) NOT NULL, `key` CHAR(50) NOT NULL, `old_value` CHAR(50) NOT NULL, `new_value` CHAR(50) NOT NULL) COLLATE='utf8_general_ci' ENGINE=MyISAM;";
+		$q = "CREATE TABLE IF NOT EXISTS `" . DB_PREFIX . "relations` (`data_source` CHAR(50) NOT NULL, `key` CHAR(50) NOT NULL, `old_value` CHAR(50) NOT NULL, `new_value` CHAR(50) NOT NULL) COLLATE='utf8_general_ci' ENGINE=MyISAM;";
 		$result = $this->db->query($q);
 
 		return $result;
