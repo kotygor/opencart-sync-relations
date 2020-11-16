@@ -74,4 +74,11 @@ class ModelToolJdToolsRelations extends Model {
 		$result = $this->db->query($sql);
 		return $result;
 	}
+
+	public function createRelationsTable() {
+		$q = "CREATE TABLE IF NOT EXISTS `" . DB_PREFIX . "_relations` (`data_source` CHAR(50) NOT NULL, `key` CHAR(50) NOT NULL, `old_value` CHAR(50) NOT NULL, `new_value` CHAR(50) NOT NULL) COLLATE='utf8_general_ci' ENGINE=MyISAM;";
+		$result = $this->db->query($q);
+
+		return $result;
+	}
 }

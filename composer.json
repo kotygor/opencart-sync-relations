@@ -9,7 +9,7 @@
 			"admin/model/tool/jd_tools/relations.php",
 			"system/library/jd_tools/relation.php"
 		],
-		"turned-off-installers" : {
+		"installers" : {
 			"php" : "install.php"
 		},
 		"opencart-install-dir": "opencart",
