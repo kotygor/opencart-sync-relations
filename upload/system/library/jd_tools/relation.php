@@ -5,9 +5,9 @@ class Relation {
 	private $remote_data_source;
 	private $model;
 	protected $registry;
-	public function __construct ($registry, $remote_data_source)
+	public function __construct ($registry)
 	{
-		$this->remote_data_source = $remote_data_source;
+		$this->remote_data_source = $registry->get('config')->get('softco_1c_target_config')['from'];
 		$this->registry = $registry;
 
 		$model = 'tool/jd_tools/relations';
