@@ -63,8 +63,8 @@ class ModelToolJdToolsRelations extends Model {
 		}
 	}
 
-	public function setRelationKey( $key, $old_value, $new_value, $source) {
-		$sql = "INSERT `" . DB_PREFIX. "relations` (`key`, `old_value`, `new_value`, `data_source`) VALUE ('" . $key ."', '". $old_value ."', '". $new_value ."', '" . $source . "');";
+	public function setRelationKey( $key, $old_value, $new_value, $source, $lastmode) {
+		$sql = "INSERT `" . DB_PREFIX. "relations` (`key`, `old_value`, `new_value`, `data_source`, `lastmode`) VALUE ('" . $key ."', '". $old_value ."', '". $new_value ."', '" . $source . "', " . (($lastmode == '')? 'NOW()' : "'" . $lastmode . "'" ) . ");";
 		$result = $this->db->query($sql);
 		return $result;
 	}

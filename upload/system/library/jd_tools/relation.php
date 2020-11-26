@@ -7,8 +7,10 @@ class Relation {
 	protected $registry;
 	public function __construct ($registry)
 	{
-		$this->remote_data_source = $registry->get('config')->get('softco_1c_target_config')['from'];
 		$this->registry = $registry;
+		$config_key = $this->config->get('jd_sync_module');
+		$this->remote_data_source = $this->config->get($config_key . '_config')['source']['from'];
+
 
 		$model = 'tool/jd_tools/relations';
 		$this->load->model($model);
@@ -32,8 +34,8 @@ class Relation {
 		return $this->{$this->model}->getRelationKey($key, $value, $this->remote_data_source);
 	}
 
-	public function setRelationKey($key, $old_value, $new_value) {
-		return $this->{$this->model}->setRelationKey($key, $old_value, $new_value, $this->remote_data_source);
+	public function setRelationKey($key, $old_value, $new_value, $lastmod) {
+		return $this->{$this->model}->setRelationKey($key, $old_value, $new_value, $this->remote_data_source, $lastmod);
 	}
 
 	public function updateRelationValue($key, $source_value, $new_value) {
