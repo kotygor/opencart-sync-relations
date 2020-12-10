@@ -11,9 +11,7 @@
 		],
 		"installers" : {
 			"php" : "install.php"
-		},
-		"opencart-install-dir": "opencart",
-		"opencart-storage-dir": "opencart-storage"
+		}
 	},
 	"require": {
 		"kotygor/opencart-extension-installer": "dev-master",
