@@ -45,7 +45,7 @@ class Relation {
 		return $this->{$this->model}->getOldRelationKey($key, $value, $this->remote_data_source);
 	}
 
-	public function setRelationKey($key, $old_value, $new_value, $lastmod) {
+	public function setRelationKey($key, $old_value, $new_value, $lastmod = '') {
 		return $this->{$this->model}->setRelationKey($key, $old_value, $new_value, $this->remote_data_source, $lastmod);
 	}
 
