@@ -5,11 +5,18 @@ class Relation {
 	private $remote_data_source;
 	private $model;
 	protected $registry;
-	public function __construct ($registry)
+	public function __construct ($registry, $source = '')
 	{
 		$this->registry = $registry;
-		$config_key = $this->config->get('jd_sync_module');
-		$this->remote_data_source = $this->config->get($config_key . '_config')['source']['from'];
+
+		if(empty($source)) {
+			$config_key = $this->config->get('jd_sync_module');
+			$this->remote_data_source = $this->config->get($config_key . '_config')['source']['from'];
+		}
+		else {
+			$this->remote_data_source = $source;
+		}
+
 
 
 		$model = 'tool/jd_tools/relations';
@@ -32,6 +39,10 @@ class Relation {
 	 */
 	public function getNewKeyValue( $key, $value) {
 		return $this->{$this->model}->getRelationKey($key, $value, $this->remote_data_source);
+	}
+
+	public function getOldKeyValue( $key, $value ) {
+		return $this->{$this->model}->getOldRelationKey($key, $value, $this->remote_data_source);
 	}
 
 	public function setRelationKey($key, $old_value, $new_value, $lastmod) {
