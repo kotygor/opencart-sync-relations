@@ -63,6 +63,13 @@ class ModelToolJdToolsRelations extends Model {
 		}
 	}
 
+	public function getLastMode( $key, $value, $source) {
+		$sql = "SELECT `lastmode` FROM `" . DB_PREFIX . "relations` WHERE `key` = '" . $key . "' AND `old_value` = '" . $value . "' AND `data_source` = '" . $source . "'";
+		$result = $this->db->query($sql);
+
+		return $result->row['lastmode'];
+	}
+
 	public function setRelationKey( $key, $old_value, $new_value, $source, $lastmode) {
 		$sql = "INSERT `" . DB_PREFIX. "relations` (`key`, `old_value`, `new_value`, `data_source`, `lastmode`) VALUE ('" . $key ."', '". $old_value ."', '". $new_value ."', '" . $source . "', " . (($lastmode == '')? 'NOW()' : "'" . $lastmode . "'" ) . ");";
 		$result = $this->db->query($sql);

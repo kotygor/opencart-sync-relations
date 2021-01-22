@@ -40,6 +40,9 @@ class Relation {
 	public function getNewKeyValue( $key, $value) {
 		return $this->{$this->model}->getRelationKey($key, $value, $this->remote_data_source);
 	}
+	public function getLastMode($key, $value) {
+		return $this->{$this->model}->getLastMode($key, $value, $this->remote_data_source);
+	}
 
 	public function getOldKeyValue( $key, $value ) {
 		return $this->{$this->model}->getOldRelationKey($key, $value, $this->remote_data_source);
