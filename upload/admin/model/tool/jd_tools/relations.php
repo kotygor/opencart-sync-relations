@@ -63,6 +63,18 @@ class ModelToolJdToolsRelations extends Model {
 		}
 	}
 
+	public function getRelationKeyFullData($key, $value, $source) {
+		$sql = "SELECT * FROM `" . DB_PREFIX . "relations` WHERE `key` = '" . $key . "' AND `old_value` = '" . $value . "' AND `data_source` = '" . $source . "'";
+		$result = $this->db->query($sql);
+
+		if ( $result->num_rows > 0 ) {
+			return $result->row;
+		}
+		else {
+			return false;
+		}
+	}
+
 	public function getLastMode( $key, $value, $source) {
 		$sql = "SELECT `lastmode` FROM `" . DB_PREFIX . "relations` WHERE `key` = '" . $key . "' AND `old_value` = '" . $value . "' AND `data_source` = '" . $source . "'";
 		$result = $this->db->query($sql);
