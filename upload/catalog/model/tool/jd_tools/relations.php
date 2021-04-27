@@ -4,9 +4,10 @@ class ModelToolJDToolsRelations extends Model {
 		$sql = "SELECT `old_value` FROM `" . DB_PREFIX . "relations` WHERE `key` = '" . $key . "' AND `new_value` = '" . $value . "' AND `data_source` = '" . $source . "'";
 		$result = $this->db->query($sql);
 
-		return $result->row['old_value'];
+		if(!empty($result->row['old_value'])) return $result->row['old_value'];
+		else return false;
 	}
-	public function setRelationKey( $key, $old_value, $new_value, $source, $lastmode) {
+	public function setRelationKey( $key, $old_value, $new_value, $source, $lastmode = '') {
 		$sql = "INSERT `" . DB_PREFIX. "relations` (`key`, `old_value`, `new_value`, `data_source`, `lastmode`) VALUE ('" . $key ."', '". $old_value ."', '". $new_value ."', '" . $source . "', " . (($lastmode == '')? 'NOW()' : "'" . $lastmode . "'" ) . ");";
 		$result = $this->db->query($sql);
 		return $result;
