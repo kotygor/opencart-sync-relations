@@ -100,7 +100,7 @@ class ModelToolJdToolsRelations extends Model {
 				. "`key` CHAR(50) NOT NULL, "
 				. "`old_value` CHAR(50) NOT NULL, "
 				. "`new_value` CHAR(50) NOT NULL, "
-				. "`lastmode` DATETIME NOT NULL, "
+				. "`lastmode` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, "
 				. "UNIQUE INDEX `data_source_key_old_value_new_value` (`data_source`, `key`, `old_value`, `new_value`) "
 				. ") COLLATE='utf8_general_ci' ENGINE=MyISAM;";
 		$result = $this->db->query($q);
