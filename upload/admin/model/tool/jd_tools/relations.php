@@ -1,8 +1,9 @@
 <?php
+// v0.1.4
 class ModelToolJdToolsRelations extends Model {
 
 	public function getRelationKey( $key, $value, $source) {
-		$sql = "SELECT `new_value` FROM `" . DB_PREFIX . "relations` WHERE `key` = '" . $key . "' AND `old_value` = '" . $value . "' AND `data_source` = '" . $source . "'";
+		$sql = "SELECT `new_value` FROM `" . DB_PREFIX . "relations` WHERE `key` = '" . $key . "' AND `old_value` = '" . $this->db->escape($value) . "' AND `data_source` = '" . $source . "'";
 		$result = $this->db->query($sql);
 		//echo "KEY = $key, VALUE = $value <pre>"; print_r($result); echo "</pre>";
 
@@ -83,8 +84,34 @@ class ModelToolJdToolsRelations extends Model {
 	}
 
 	public function setRelationKey( $key, $old_value, $new_value, $source, $lastmode) {
-		$sql = "INSERT `" . DB_PREFIX. "relations` (`key`, `old_value`, `new_value`, `data_source`, `lastmode`) VALUE ('" . $key ."', '". $old_value ."', '". $new_value ."', '" . $source . "', " . (($lastmode == '')? 'NOW()' : "'" . $lastmode . "'" ) . ");";
-		$result = $this->db->query($sql);
+		$check = "SELECT * FROM `" . DB_PREFIX. "relations`"
+			. " WHERE `key` = '{$key}'"
+			. " AND `old_value` = '" . $this->db->escape($old_value) . "'"
+			. " AND `new_value` = '" . $this->db->escape($new_value) . "'"
+			. " AND `data_source` = '" . $this->db->escape($source) . "'"
+			. ";";
+		$check = $this->db->query($check)->row;
+		if(empty($check)) {
+			$sql = "INSERT `" . DB_PREFIX. "relations` (`key`, `old_value`, `new_value`, `data_source`, `lastmode`)"
+				. " VALUE ('" . $key ."', '". $old_value ."', '". $new_value ."', '" . $source . "', " . (($lastmode == '')? 'NOW()' : "'" . $lastmode . "'" ) . ")"
+				. " ON DUPLICATE KEY UPDATE `new_value` = '" . $new_value . "',"
+				. " `lastmode` = " . (($lastmode == '')? 'NOW()' : "'" . $lastmode . "'") . ";";
+			$result = $this->db->query($sql);
+		}
+		else {
+			$result = $check['new_value'];
+			/*
+			$this->log->write("Дубль значення в setRelationKey!\r\n" . print_r(
+				[
+					'key' => $key,
+					'old_value' => $old_value,
+					'new_value' => $new_value,
+					'data_source'   => $source
+				], 1
+			));
+			*/
+		}
+
 		return $result;
 	}
 

@@ -1,4 +1,5 @@
 <?php
+// v0.1.4
 class ModelToolJDToolsRelations extends Model {
 	public function getOldRelationKey($key, $value, $source) {
 		$sql = "SELECT `old_value` FROM `" . DB_PREFIX . "relations` WHERE `key` = '" . $key . "' AND `new_value` = '" . $value . "' AND `data_source` = '" . $source . "'";
