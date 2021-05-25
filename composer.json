@@ -1,5 +1,6 @@
 {
 	"name": "kotygor/opencart-sync-relations",
+	"version": "v0.1.3",
 	"description": "Створення відношень між унікальними ідентифікаторами зовнішнього ресурсу і опенкарту",
 	"type": "opencart-extension",
 	"minimum-stability": "dev",
