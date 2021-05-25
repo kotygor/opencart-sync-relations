@@ -1,6 +1,6 @@
 {
 	"name": "kotygor/opencart-sync-relations",
-	"descripiton": "Створення відношень між унікальними ідентифікаторами зовнішнього ресурсу і опенкарту",
+	"description": "Створення відношень між унікальними ідентифікаторами зовнішнього ресурсу і опенкарту",
 	"type": "opencart-extension",
 	"minimum-stability": "dev",
 	"extra": {
@@ -11,7 +11,8 @@
 			"system/library/jd_tools/relation.php"
 		],
 		"installers" : {
-			"php" : "install.php"
+			"php" : "install.php",
+			"xml" : "install.xml"
 		}
 	},
 	"require": {

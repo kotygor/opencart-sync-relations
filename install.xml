@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<modification>
+	<name>Opencart sync relations</name>
+	<version>1.0.1</version>
+	<author>JD</author>
+	<link>zelenuj@gmail.com</link>
+	<code>Opencart sync relations</code>
+	<file path="admin/model/catalog/product.php">
+		<operation>
+		    <search><![CDATA[
+		    foreach ($product_option['product_option_value'] as $product_option_value) {
+		    ]]></search>
+		    <add position="after"><![CDATA[
+		    // << kotygor_opencart_sync_relations.ocmod.xml
+		    $sql = "INSERT `" . DB_PREFIX . "relations` SET `data_source` = 'softko_1c', `key` = 'product_option_value_id', "
+					. "`new_value` = '{$product_id}_{$product_option_value['option_value_id']}', "
+					. "`old_value` = '{$product_option_value['1c_product_option_value_id']}' "
+					. " ON DUPLICATE KEY UPDATE `new_value` = '{$product_id}_{$product_option_value['option_value_id']}'";
+			$this->db->query($sql);
+		    // >> kotygor_opencart_sync_relations.ocmod.xml
+		    ]]></add>
+		</operation>
+		
+	</file>
+</modification>
