@@ -1,5 +1,5 @@
 <?php
-// v0.1.4
+// v0.1.5
 class ModelToolJdToolsRelations extends Model {
 
 	public function getRelationKey( $key, $value, $source) {
@@ -62,6 +62,13 @@ class ModelToolJdToolsRelations extends Model {
 		else {
 			return false;
 		}
+	}
+
+	public function getOldRelationKey($key, $new_value, $source) {
+		$sql = "SELECT `old_value` FROM `" . DB_PREFIX . "relations` WHERE `key` = '" . $key . "' AND `new_value` = '" . $this->db->escape($new_value) . "' AND `data_source` = '" . $source . "'";
+		$result = $this->db->query($sql)->row;
+
+		return $result;
 	}
 
 	public function getRelationKeyFullData($key, $value, $source) {
