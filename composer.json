@@ -1,6 +1,6 @@
 {
 	"name": "kotygor/opencart-sync-relations",
-	"version": "v0.1.5",
+	"version": "v0.1.6",
 	"description": "Створення відношень між унікальними ідентифікаторами зовнішнього ресурсу і опенкарту",
 	"type": "opencart-extension",
 	"minimum-stability": "dev",
@@ -17,8 +17,7 @@
 		}
 	},
 	"require": {
-		"kotygor/opencart-extension-installer": "dev-master",
-		"kotygor/opencart": "dev-fcb"
+		"kotygor/opencart-extension-installer": "~v3.0"
 	},
 	"require-dev": {
 		"kotygor/mylog": "v2.x-dev"
