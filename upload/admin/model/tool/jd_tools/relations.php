@@ -1,5 +1,5 @@
 <?php
-// v0.1.7
+// v0.1.8
 class ModelToolJdToolsRelations extends Model {
 
 	public function getRelationKey( $key, $value, $source) {
